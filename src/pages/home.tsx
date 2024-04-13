@@ -4,4 +4,4 @@ function Home() {
     </h1>
 }
 
-export default Home()
+export default Home
