@@ -1,13 +1,13 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import React from "react";
-import FolderIcon from '@mui/icons-material/Folder';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import InfoIcon from '@mui/icons-material/Info';
 import { Navigate, useNavigate } from "react-router-dom";
+import { Info } from "@mui/icons-material";
 
 function MenuBar() {
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState('home');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -19,20 +19,20 @@ function MenuBar() {
     <BottomNavigation sx={{ width: "100%", position: "absolute", bottom: 0 }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="หน้าหลัก"
-        value="recents"
-        icon={<RestoreIcon />}
+        value="home"
+        icon={<HomeIcon />}
         onClick={() => navigate("/home")}
       />
       <BottomNavigationAction
         label="แผนที่"
-        value="favorites"
-        icon={<FavoriteIcon />}
+        value="map"
+        icon={<LocationOnIcon />}
         onClick={() => navigate("/map")}
       />
       <BottomNavigationAction
         label="เกี่ยวกับ"
-        value="nearby"
-        icon={<LocationOnIcon />}
+        value="about"
+        icon={<Info />}
         onClick={() => navigate("/about")}
       />
       {/* <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} /> */}
