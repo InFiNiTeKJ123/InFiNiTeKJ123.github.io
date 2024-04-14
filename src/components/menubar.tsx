@@ -2,8 +2,7 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import React from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import InfoIcon from '@mui/icons-material/Info';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Info } from "@mui/icons-material";
 
 function MenuBar() {
@@ -16,7 +15,7 @@ function MenuBar() {
   const navigate = useNavigate();
 
   return (
-    <BottomNavigation sx={{ width: "100%", position: "absolute", bottom: 0 }} value={value} onChange={handleChange}>
+    <BottomNavigation sx={{ width: "100%", position: "fixed", bottom: 0 }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="หน้าหลัก"
         value="home"
