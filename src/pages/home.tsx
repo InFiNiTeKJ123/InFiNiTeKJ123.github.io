@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 import SearchBar from "../components/searchbar"
@@ -31,19 +31,47 @@ function Home() {
                 <Typography sx={{ paddingLeft: "2vh", fontSize: "16px" }}>
                     14 เมษายน 2567 เวลา 19:00
                 </Typography>
-                <Typography sx={{ fontWeight: 'bold', fontSize: "20px", display: 'flex', justifyContent: 'center', paddingTop: '2vh'}}>
-                    กรุงเทพมหานคร
+            </Box>
+            <Box component='div' sx={{ display: 'flex', alignItems: "center", justifyContent: 'center' }}>
+                <Box component="img" sx={{ height: "20vh", display: 'flex', paddingTop: "2vh" }}
+                    src='https://cdn4.iconfinder.com/data/icons/mini-material-design-weather-icons-multi-color/32/night_thunderstorm-512.png' />
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '20vh'}}>
+                <Typography variant="h4" gutterBottom>
+                    Bangkok
+                </Typography>
+                <Typography variant="h2" gutterBottom>
+                    32°c
                 </Typography>
             </Box>
-            <Box component='div' sx={{ display: 'flex', alignItems: "center", justifyContent:'center'}}>
-                <Box component="img" sx={{ backgroundColor:'red' ,height: "30vh", display:'flex', paddingTop: "2vh"}}
-                    src='https://cdn4.iconfinder.com/data/icons/mini-material-design-weather-icons-multi-color/32/night_thunderstorm-512.png'/>
-            </Box>
-            <Typography>
-                32c
-            </Typography>
+            {Min_Max_Temp}
         </Box>
     )
 }
+
+const Min_Max_Temp = <Box>
+    <Grid container spacing={2} columns={16}>
+        <Grid item xs={8} sx={{ backgroundColor: 'red' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <Typography sx={{ color: 'black' }}>
+                    Max
+                </Typography>
+                <Typography>
+                    35°c
+                </Typography>
+            </Box>
+        </Grid>
+        <Grid item xs={8} sx={{ backgroundColor: 'green' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <Typography sx={{ color: 'black' }}>
+                    Min
+                </Typography>
+                <Typography>
+                    20°c
+                </Typography>
+            </Box>
+        </Grid>
+    </Grid>
+</Box>
 
 export default Home

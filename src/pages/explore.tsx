@@ -1,8 +1,11 @@
+import { Box } from '@mui/material'
 import React from 'react'
 
 function Explore() {
   return (
-    <h1>Exp</h1>
+    <Box sx={{ height: '90vh'}}>
+      <iframe src= "https://thai.tourismthailand.org/Destinations" width='100%' height='100%'></iframe>
+    </Box>
   )
 }
 
