@@ -3,7 +3,7 @@ import React from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useNavigate } from "react-router-dom";
-import { Info } from "@mui/icons-material";
+import { Explore, Info } from "@mui/icons-material";
 
 function MenuBar() {
   const [value, setValue] = React.useState('home');
@@ -21,6 +21,12 @@ function MenuBar() {
         value="home"
         icon={<HomeIcon />}
         onClick={() => navigate("/home")}
+      />
+      <BottomNavigationAction
+        label="ข่าวสาร"
+        value="explore"
+        icon={<Explore />}
+        onClick={() => navigate("/explore")}
       />
       <BottomNavigationAction
         label="แผนที่"
