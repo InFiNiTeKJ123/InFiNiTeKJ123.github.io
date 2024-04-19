@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Box, Autocomplete, TextField } from '@mui/material';
+import provinces_thai_name from '../config/config';
+import SearchIcon from '@mui/icons-material/Search'; // Import the SearchIcon
 
-function SearchBar() {
+function SearchBar(props : any) {
+
+  const [value, setValue] = useState('');
+
+  const handlechange = (event : any, newvalue: any) => {
+    props.set_place_EN(newvalue)
+  }
+
   return (
     <Box>
         <Autocomplete
@@ -12,24 +21,21 @@ function SearchBar() {
         groupBy={(option) => option.region} // Group by year as string
         // getOptionLabel={(option) => `${option.name} - ${option.region}`}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Province" />}
+        renderInput={(params) => <TextField {...params} label="Search" variant='filled' sx={{ backgroundColor: 'white'}}/>}
+        value={props.place_EN}
+        onChange={handlechange}
         />
     </Box>
   )
 }
 
 export default SearchBar
-
-// interface ProvinceRegion {
-//     name: string;
-//     region: string;
-//   }
 interface ProvinceRegion {
     label: string;
     region: string;
   }
 
-const provinces_region: ProvinceRegion[] = [
+export const provinces_region: ProvinceRegion[] = [
     { label: "Chiang Mai", region: "North" },
     { label: "Chiang Rai", region: "North" },
     { label: "Lampang", region: "North" },
@@ -39,138 +45,77 @@ const provinces_region: ProvinceRegion[] = [
     { label: "Phayao", region: "North" },
     { label: "Phare", region: "North" },
     { label: "Uttaradit", region: "North" },
+    // North-east
+    { label: "Kalasin", region: "North-East" },
+    { label: "Khon Kaen", region: "North-East" },
+    { label: "Chaiyaphum", region: "North-East" },
+    { label: "Nakhon Phanom", region: "North-East" },
+    { label: "Nakhon Ratchasima", region: "North-East" },
+    { label: "Bueng Kan", region: "North-East" },
+    { label: "Buriram", region: "North-East" },
+    { label: "Maha Sarakham", region: "North-East" },
+    { label: "Mukdahan", region: "North-East" },
+    { label: "Yasothon", region: "North-East" },
+    { label: "Roi Et", region: "North-East" },
+    { label: "Loei", region: "North-East" },
+    { label: "Sakon Nakhon", region: "North-East" },
+    { label: "Surin", region: "North-East" },
+    { label: "Nong Khai", region: "North-East" },
+    { label: "Nong Bua Lamphu", region: "North-East" },
+    { label: "Udon Thani", region: "North-East" },
+    { label: "Ubon Ratchathani", region: "North-East" },
+    { label: "Amnat Charoen", region: "North-East" },
+    // Central
+    { label: "Bangkok", region: "Central" },
+    { label: "Kamphaeng Phet", region: "Central" },
+    { label: "Chai Nat", region: "Central" },
+    { label: "Nakhon Nayok", region: "Central" },
+    { label: "Nakhon Pathom", region: "Central" },
+    { label: "Nakhon Sawan", region: "Central" },
+    { label: "Nonthaburi", region: "Central" },
+    { label: "Phra Nakhon Si Ayutthaya", region: "Central" },
+    { label: "Phichit", region: "Central" },
+    { label: "Phitsanulok", region: "Central" },
+    { label: "Phetchabun", region: "Central" },
+    { label: "Lopburi", region: "Central" },
+    { label: "Samut Prakan", region: "Central" },
+    { label: "Samut Songkhram", region: "Central" },
+    { label: "Samut Sakhon", region: "Central" },
+    { label: "Sing Buri", region: "Central" },
+    { label: "Sukhothai", region: "Central" },
+    { label: "Suphan Buri", region: "Central" },
+    { label: "Saraburi", region: "Central" },
+    { label: "Ang Thong", region: "Central" },
+    { label: "Uthai Thani", region: "Central" },
+    // East
+    { label: "Chanthaburi", region: "East" },
+    { label: "Chachoengsao", region: "East" },
+    { label: "Chonburi", region: "East" },
+    { label: "Trat", region: "East" },
+    { label: "Prachinburi", region: "East" },
+    { label: "Rayong", region: "East" },
+    { label: "Sa Kaeo", region: "East" },
     // West
     { label: "Kanchanaburi", region: "West" },
     { label: "Tak", region: "West" },
     { label: "Prachuap Khiri Khan", region: "West" },
     { label: "Phetchaburi", region: "West" },
     { label: "Ratchaburi", region: "West" },
+    // South
+    { label: "Krabi", region: "South" },
+    { label: "Chumphon", region: "South" },
+    { label: "Trang", region: "South" },
+    { label: "Nakhon Si Thammarat", region: "South" },
+    { label: "Narathiwat", region: "South" },
+    { label: "Pattani", region: "South" },
+    { label: "Phang Nga", region: "South" },
+    { label: "Phatthalung", region: "South" },
+    { label: "Phuket", region: "South" },
+    { label: "Ranong", region: "South" },
+    { label: "Satun", region: "South" },
+    { label: "Songkhla", region: "South" },
+    { label: "Surat Thani", region: "South" },
+    { label: "Yala", region: "South" },
 ];
 
-const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
-    {
-      label: 'The Lord of the Rings: The Return of the King',
-      year: 2003,
-    },
-    { label: 'The Good, the Bad and the Ugly', year: 1966 },
-    { label: 'Fight Club', year: 1999 },
-    {
-      label: 'The Lord of the Rings: The Fellowship of the Ring',
-      year: 2001,
-    },
-    {
-      label: 'Star Wars: Episode V - The Empire Strikes Back',
-      year: 1980,
-    },
-    { label: 'Forrest Gump', year: 1994 },
-    { label: 'Inception', year: 2010 },
-    {
-      label: 'The Lord of the Rings: The Two Towers',
-      year: 2002,
-    },
-    { label: "One Flew Over the Cuckoo's Nest", year: 1975 },
-    { label: 'Goodfellas', year: 1990 },
-    { label: 'The Matrix', year: 1999 },
-    { label: 'Seven Samurai', year: 1954 },
-    {
-      label: 'Star Wars: Episode IV - A New Hope',
-      year: 1977,
-    },
-    { label: 'City of God', year: 2002 },
-    { label: 'Se7en', year: 1995 },
-    { label: 'The Silence of the Lambs', year: 1991 },
-    { label: "It's a Wonderful Life", year: 1946 },
-    { label: 'Life Is Beautiful', year: 1997 },
-    { label: 'The Usual Suspects', year: 1995 },
-    { label: 'Léon: The Professional', year: 1994 },
-    { label: 'Spirited Away', year: 2001 },
-    { label: 'Saving Private Ryan', year: 1998 },
-    { label: 'Once Upon a Time in the West', year: 1968 },
-    { label: 'American History X', year: 1998 },
-    { label: 'Interstellar', year: 2014 },
-    { label: 'Casablanca', year: 1942 },
-    { label: 'City Lights', year: 1931 },
-    { label: 'Psycho', year: 1960 },
-    { label: 'The Green Mile', year: 1999 },
-    { label: 'The Intouchables', year: 2011 },
-    { label: 'Modern Times', year: 1936 },
-    { label: 'Raiders of the Lost Ark', year: 1981 },
-    { label: 'Rear Window', year: 1954 },
-    { label: 'The Pianist', year: 2002 },
-    { label: 'The Departed', year: 2006 },
-    { label: 'Terminator 2: Judgment Day', year: 1991 },
-    { label: 'Back to the Future', year: 1985 },
-    { label: 'Whiplash', year: 2014 },
-    { label: 'Gladiator', year: 2000 },
-    { label: 'Memento', year: 2000 },
-    { label: 'The Prestige', year: 2006 },
-    { label: 'The Lion King', year: 1994 },
-    { label: 'Apocalypse Now', year: 1979 },
-    { label: 'Alien', year: 1979 },
-    { label: 'Sunset Boulevard', year: 1950 },
-    {
-      label: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-      year: 1964,
-    },
-    { label: 'The Great Dictator', year: 1940 },
-    { label: 'Cinema Paradiso', year: 1988 },
-    { label: 'The Lives of Others', year: 2006 },
-    { label: 'Grave of the Fireflies', year: 1988 },
-    { label: 'Paths of Glory', year: 1957 },
-    { label: 'Django Unchained', year: 2012 },
-    { label: 'The Shining', year: 1980 },
-    { label: 'WALL·E', year: 2008 },
-    { label: 'American Beauty', year: 1999 },
-    { label: 'The Dark Knight Rises', year: 2012 },
-    { label: 'Princess Mononoke', year: 1997 },
-    { label: 'Aliens', year: 1986 },
-    { label: 'Oldboy', year: 2003 },
-    { label: 'Once Upon a Time in America', year: 1984 },
-    { label: 'Witness for the Prosecution', year: 1957 },
-    { label: 'Das Boot', year: 1981 },
-    { label: 'Citizen Kane', year: 1941 },
-    { label: 'North by Northwest', year: 1959 },
-    { label: 'Vertigo', year: 1958 },
-    {
-      label: 'Star Wars: Episode VI - Return of the Jedi',
-      year: 1983,
-    },
-    { label: 'Reservoir Dogs', year: 1992 },
-    { label: 'Braveheart', year: 1995 },
-    { label: 'M', year: 1931 },
-    { label: 'Requiem for a Dream', year: 2000 },
-    { label: 'Amélie', year: 2001 },
-    { label: 'A Clockwork Orange', year: 1971 },
-    { label: 'Like Stars on Earth', year: 2007 },
-    { label: 'Taxi Driver', year: 1976 },
-    { label: 'Lawrence of Arabia', year: 1962 },
-    { label: 'Double Indemnity', year: 1944 },
-    {
-      label: 'Eternal Sunshine of the Spotless Mind',
-      year: 2004,
-    },
-    { label: 'Amadeus', year: 1984 },
-    { label: 'To Kill a Mockingbird', year: 1962 },
-    { label: 'Toy Story 3', year: 2010 },
-    { label: 'Logan', year: 2017 },
-    { label: 'Full Metal Jacket', year: 1987 },
-    { label: 'Dangal', year: 2016 },
-    { label: 'The Sting', year: 1973 },
-    { label: '2001: A Space Odyssey', year: 1968 },
-    { label: "Singin' in the Rain", year: 1952 },
-    { label: 'Toy Story', year: 1995 },
-    { label: 'Bicycle Thieves', year: 1948 },
-    { label: 'The Kid', year: 1921 },
-    { label: 'Inglourious Basterds', year: 2009 },
-    { label: 'Snatch', year: 2000 },
-    { label: '3 Idiots', year: 2009 },
-    { label: 'Monty Python and the Holy Grail', year: 1975 },
-  ];
 

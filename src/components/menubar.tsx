@@ -5,42 +5,42 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useNavigate } from "react-router-dom";
 import { Explore, Info } from "@mui/icons-material";
 
-function MenuBar() {
+function MenuBar(props: any) {
   const [value, setValue] = React.useState('home');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    props.set_current_page(newValue)
   };
 
   const navigate = useNavigate();
 
   return (
-    <BottomNavigation sx={{ width: "100%", position: "fixed", bottom: 0 }} value={value} onChange={handleChange}>
+    <BottomNavigation sx={{ width: "100%", position: "fixed", bottom: 0 }} value={props.current_page} onChange={handleChange}>
       <BottomNavigationAction
-        label="หน้าหลัก"
+        label="Home"
         value="home"
         icon={<HomeIcon />}
         onClick={() => navigate("/home")}
       />
       <BottomNavigationAction
-        label="ข่าวสาร"
+        label="Explore"
         value="explore"
         icon={<Explore />}
         onClick={() => navigate("/explore")}
       />
       <BottomNavigationAction
-        label="แผนที่"
+        label="Map"
         value="map"
         icon={<LocationOnIcon />}
         onClick={() => navigate("/map")}
       />
       <BottomNavigationAction
-        label="เกี่ยวกับ"
+        label="Contact"
         value="about"
         icon={<Info />}
         onClick={() => navigate("/about")}
       />
-      {/* <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} /> */}
     </BottomNavigation>
   )
 }

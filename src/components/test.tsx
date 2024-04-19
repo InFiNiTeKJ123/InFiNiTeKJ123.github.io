@@ -1,40 +1,44 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
+// import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
-// interface WeatherData {
-//   city: string;
-//   temperature: number;
-//   humidity: number;
-//   windSpeed: number;
-// }
+// const useStyles = makeStyles({
+//   aqi: {
+//     fontSize: 48,
+//     color: '#ff9800',
+//   },
+//   label: {
+//     fontSize: 18,
+//   },
+//   value: {
+//     fontSize: 24,
+//   },
+// });
 
-function Weather() {
+interface AirQualityProps {
+  aqi: number;
+  label: string;
+  value: number;
+  unit?: string;
+}
+
+// const AirQuality: React.FC<AirQualityProps> = ({ aqi, label, value, unit }) => {
+  // const classes = useStyles();
+function AirQuality () {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh', backgroundColor: '#e0e0e0' }}>
-      <Typography variant="h3" gutterBottom>
-        Bangkok
+    <Grid container direction="column" alignItems="center">
+      <Typography variant="h1" sx={{ fontSize: '48', color: '#ff9800'}}>
+        50
       </Typography>
-      <Typography variant="h1" gutterBottom>
-        32°c
+      <Typography variant="body1" sx={{ fontSize: '18'}}>
+        Hard
       </Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
-        <Typography variant="h6" gutterBottom>
-          Humidity
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          50%
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
-        <Typography variant="h6" gutterBottom>
-          Wind Speed
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          9 km/h
-        </Typography>
-      </Box>
-    </Box>
+      <Typography variant="h4" sx={{ fontsize: '24' }}>
+        120 um
+      </Typography>
+    </Grid>
   );
 };
 
-export default Weather;
+export default AirQuality;
