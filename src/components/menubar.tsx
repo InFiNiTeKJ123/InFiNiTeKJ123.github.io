@@ -21,25 +21,25 @@ function MenuBar(props: any) {
         label="Home"
         value="home"
         icon={<HomeIcon />}
-        onClick={() => navigate("/home")}
+        onClick={() => navigate("https://infinitekj123.github.io/weather-web-app/#/home")}
       />
       <BottomNavigationAction
         label="Explore"
         value="explore"
         icon={<Explore />}
-        onClick={() => navigate("/explore")}
+        onClick={() => navigate("https://infinitekj123.github.io/weather-web-app/#/explore")}
       />
       <BottomNavigationAction
         label="Map"
         value="map"
         icon={<LocationOnIcon />}
-        onClick={() => navigate("/map")}
+        onClick={() => navigate("https://infinitekj123.github.io/weather-web-app/#/map")}
       />
       <BottomNavigationAction
         label="Contact"
         value="about"
         icon={<Info />}
-        onClick={() => navigate("/about")}
+        onClick={() => navigate("https://infinitekj123.github.io/weather-web-app/#/about")}
       />
     </BottomNavigation>
   )
