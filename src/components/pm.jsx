@@ -68,7 +68,7 @@ function PM(props) {
     }
 
     return (
-        <Box sx={{ paddingTop: '2vh', paddingBottom: '2vh', backgroundColor: pollutioncolor(props.data?.['pollution']['aqius']) }}>
+        <Box sx={{ paddingTop: '2vh', paddingBottom: '2vh', marginBottom:'10vh', backgroundColor: pollutioncolor(props.data?.['pollution']['aqius']) }}>
             <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', paddingLeft: '2vh', color: 'white' }}>
                 PM 2.5
             </Typography>

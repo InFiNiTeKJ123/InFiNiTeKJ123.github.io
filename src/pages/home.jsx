@@ -64,8 +64,8 @@ function Home() {
     }
 
     const getWeatherDataToday = async (citythainame) => {
-        //  const url = "api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
-        const url = "https://data.tmd.go.th/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+        const url = "/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+        //const url = "https://data.tmd.go.th/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
         // console.log(citythainame)
         let Data = []
         await axios.get(url).then((res) => {
@@ -84,8 +84,8 @@ function Home() {
     }
 
     const getWeatherData7Day = async (citythainame) => {
-        // const url = "api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
-        const url = "https://data.tmd.go.th/api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
+        const url = "/api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
+        // const url = "https://data.tmd.go.th/api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
         let Data = []
         await axios.get(url).then((res) => {
             Data = res.data.Provinces.Province

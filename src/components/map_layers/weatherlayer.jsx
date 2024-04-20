@@ -18,8 +18,8 @@ L.Marker.prototype.options.icon = DefaultIcon;
 function WeatherLayer() {
     const [Data, setData] = useState([])
 
-    const url = "https://data.tmd.go.th/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
-    //const url = "api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+    //const url = "https://data.tmd.go.th/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+    const url = "/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
 
     useEffect(() => {
         getdata()
