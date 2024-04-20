@@ -6,10 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Explore, Info } from "@mui/icons-material";
 
 function MenuBar(props: any) {
-  const [value, setValue] = React.useState('home');
-
+  
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
     props.set_current_page(newValue)
   };
 

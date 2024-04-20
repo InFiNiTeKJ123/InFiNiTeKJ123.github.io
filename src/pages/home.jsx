@@ -1,15 +1,15 @@
-import { Box, Grid, Typography, IconButton, Autocomplete, TextField } from "@mui/material"
+import { Box, Grid, Typography, Autocomplete, TextField } from "@mui/material"
 import axios from "axios"
-import React, { useState, useEffect } from "react"
-import SearchBar, { provinces_region } from "../components/searchbar"
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import { useState, useEffect } from "react"
+import { provinces_region } from "../components/searchbar"
 import provinces_thai_name from "../config/config"
-import Weather7days_widget from "../components/weather7days_widget";
+import { formatDate } from "../config/config";
 import Min_Max_Temp from "../components/Min_Max_Temp";
 import PM from "../components/pm";
 import Clear from './assets/sun.png'
 import Heavy_Rain from './assets/storm.png'
 import Cloud from './assets/cloud.png'
+import Rain from './assets/rain.png'
 
 function Home() {
 
@@ -64,7 +64,8 @@ function Home() {
     }
 
     const getWeatherDataToday = async (citythainame) => {
-        const url = "api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+        //  const url = "api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
+        const url = "https://data.tmd.go.th/api/Weather3Hours/V2/?uid=api&ukey=api12345&format=json"
         // console.log(citythainame)
         let Data = []
         await axios.get(url).then((res) => {
@@ -83,7 +84,8 @@ function Home() {
     }
 
     const getWeatherData7Day = async (citythainame) => {
-        const url = "api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
+        // const url = "api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
+        const url = "https://data.tmd.go.th/api/WeatherForecast7Days/v2/?uid=api&ukey=api12345&format=json"
         let Data = []
         await axios.get(url).then((res) => {
             Data = res.data.Provinces.Province
@@ -129,6 +131,9 @@ function Home() {
             // setWeatherIMG('../assets/strom.png')
             return Heavy_Rain
         }
+        else if(img == 'Rain') {
+            return Rain
+        }
         else if (img == 'Clear') {
             // setWeatherIMG('../assets/sun.png')
             return Clear
@@ -146,10 +151,9 @@ function Home() {
         }
     }
 
-
     return (
         <Box >
-            <Box sx={{ background: getBGcolor(Todaydata?.['Observation']['AirTemperature'] ?? 0), paddingBottom: '2vh' }}>
+            <Box sx={{ background: getBGcolor(Todaydata?.['Observation']['AirTemperature'] ?? 0), paddingBottom: '3vh' }}>
                 <Box >
                     <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "center", paddingTop: '2vh' }}>
                         {/* <SearchBar place_EN={city} set_place_EN={setCity} /> */}
@@ -161,19 +165,19 @@ function Home() {
                             groupBy={(option) => option.region} // Group by year as string
                             // getOptionLabel={(option) => `${option.name} - ${option.region}`}
                             sx={{ width: 300 }}
-                            renderInput={(params) => <TextField {...params} label="Search" variant='filled' sx={{ backgroundColor: 'white' }} />}
+                            renderInput={(params) => <TextField {...params} label="Search" variant='filled' sx={{ backgroundColor: 'white', borderRadius: '1vh ' }} />}
                             // value={city}
                             onChange={handlechange}
                         />
                     </Box>
                     <Grid container xs={8} sx={{ paddingTop: '2vh' }}>
                         <Grid item>
-                            <Typography sx={{ fontWeight: 'bold', paddingLeft: "2vh", fontSize: "20px", color: 'white' }}>
+                            <Typography variant='h4' sx={{ fontWeight: 'bold', paddingLeft: "2vh", color: 'white', fontsize: '50px' }}>
                                 Weather Today
                             </Typography>
-                            <Typography sx={{ paddingLeft: "2vh", fontSize: "16px", color: 'white' }}>
-                                {/* 14 April 2024 19:00 */}
-                                {Todaydata?.['Observation']['DateTime']}
+                            <Typography variant='h6' sx={{ paddingLeft: "2.5vh", color: 'white' }}>
+                                {/* {Todaydata?.['Observation']['DateTime']} */}
+                                {formatDate(Todaydata?.['Observation']['DateTime'])}
                             </Typography>
                         </Grid>
                         <Grid item>
@@ -185,19 +189,24 @@ function Home() {
                         </Grid>
                     </Grid>
                 </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', paddingTop: '2vh', width: 'auto', height: 'auto'}} >
+                    <Typography variant="h4" sx={{ fontWeight: 'bold', fontSize: '30px'}}>
+                            {city ? city : 'N/A'}
+                        </Typography>
+                </Box>
                 <Box component='div' sx={{ display: 'flex', alignItems: "center", justifyContent: 'center' }}>
                     {/* {weatherimg(SevenDaydata)} */}
                     {/* <Box component="img" sx={{ height: "20vh", display: 'flex', paddingTop: "2vh" }}
                         src={weatherimg(SevenDaydata?.['SevenDaysForecast']['DescriptionEnglish'])} /> */}
                     {SevenDaydata ? (
-                        <Box component="img" sx={{ height: "20vh", display: 'flex', paddingTop: "2vh" }} src={weatherimg(SevenDaydata?.['SevenDaysForecast']['DescriptionEnglish'])} />
+                        <Box component="img" sx={{ height: "18vh", display: 'flex', paddingTop: "2vh" }} src={weatherimg(SevenDaydata?.['SevenDaysForecast']['DescriptionEnglish'])} />
                     ) : (
                         <Box>Loading...</Box>
                     )}
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '20vh', color: 'white' }}>
-                    <Typography variant="h5" gutterBottom>
-                        {city ? city : 'N/A'}
+                    <Typography variant='h5' sx={{fontweight: 'bold', paddingBottom: '1vh'}}>
+                        {SevenDaydata?.['SevenDaysForecast']['DescriptionEnglish'][6]}
                     </Typography>
                     <Typography variant="h2" sx={{ fontWeight: 'bold', color: 'white' }}>
                         {Todaydata?.['Observation']['AirTemperature']}°c

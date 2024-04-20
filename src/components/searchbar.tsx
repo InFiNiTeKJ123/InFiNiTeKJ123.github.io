@@ -3,33 +3,33 @@ import { Box, Autocomplete, TextField } from '@mui/material';
 import provinces_thai_name from '../config/config';
 import SearchIcon from '@mui/icons-material/Search'; // Import the SearchIcon
 
-function SearchBar(props : any) {
+// function SearchBar(props : any) {
 
-  const [value, setValue] = useState('');
+//   const [value, setValue] = useState('');
 
-  const handlechange = (event : any, newvalue: any) => {
-    props.set_place_EN(newvalue)
-  }
+//   const handlechange = (event : any, newvalue: any) => {
+//     props.set_place_EN(newvalue)
+//   }
 
-  return (
-    <Box>
-        <Autocomplete
-        disablePortal
-        freeSolo
-        id="provinces"
-        options={provinces_region}
-        groupBy={(option) => option.region} // Group by year as string
-        // getOptionLabel={(option) => `${option.name} - ${option.region}`}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Search" variant='filled' sx={{ backgroundColor: 'white'}}/>}
-        value={props.place_EN}
-        onChange={handlechange}
-        />
-    </Box>
-  )
-}
+//   return (
+//     <Box>
+//         <Autocomplete
+//         disablePortal
+//         freeSolo
+//         id="provinces"
+//         options={provinces_region}
+//         groupBy={(option) => option.region} // Group by year as string
+//         // getOptionLabel={(option) => `${option.name} - ${option.region}`}
+//         sx={{ width: 300 }}
+//         renderInput={(params) => <TextField {...params} label="Search" variant='filled' sx={{ backgroundColor: 'white'}}/>}
+//         value={props.place_EN}
+//         onChange={handlechange}
+//         />
+//     </Box>
+//   )
+// }
 
-export default SearchBar
+// export default SearchBar
 interface ProvinceRegion {
     label: string;
     region: string;

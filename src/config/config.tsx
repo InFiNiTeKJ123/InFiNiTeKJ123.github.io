@@ -84,17 +84,27 @@ const provinces_thai_name: Record<string, string> = {
     'Yala': 'ยะลา',
 }
 
+export const formatDate = (dateString: any) => {
+    // Create a Date object from the original string
+    const date = new Date(dateString);
+  
+    // Extract year, month (0-indexed), and day
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero for single-digit months
+    const day = String(date.getDate()).padStart(2, '0'); // Add leading zero for single-digit days
+  
+    // Format the date in the desired format
+    const formattedDate = `${day}/${month}/${year}`;
+  
+    // Extract hours and minutes from the time part (optional)
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+  
+    // Combine formatted date and time (if needed)
+    const formattedDateTime = `${formattedDate} ${hours}:${minutes}`;
+  
+    return formattedDateTime; // Return formatted date or date-time
+  }
 export const API_KEY='5CB344BB87DC4A218B4AF85EE83860AA'
 
 export default provinces_thai_name;
-// const provinces_region = [
-//     { name: "เชียงใหม่", region: "เชียงใหม่" },
-//     "Chiang Rai" : "เชียงราย",
-//     "Lampang" : "ลำปาง",
-//     "Lamphun" : "ลำพูน",
-//     "Mae Hong Son" : "แม่ฮ่องสอน",
-//     "Nan" : "น่าน",
-//     "Phayao" : "พะเยา",
-//     "Phrae" : "แพร่",
-//     "Uttaradit" : "อุตรดิตถ์",
-// ]
