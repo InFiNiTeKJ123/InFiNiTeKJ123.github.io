@@ -59,6 +59,10 @@ function WeatherLayer() {
                             Province: {item.Province}
                             <br/>
                             Temperature: {item.Observation.AirTemperature}°c
+                            <br/>
+                            RainFall: {item.Observation.Rainfall} mm
+                            <br/>
+                            WindSpeed: {item.Observation.WindSpeed} km/h
                         </Tooltip>
                     </Marker>
                 })

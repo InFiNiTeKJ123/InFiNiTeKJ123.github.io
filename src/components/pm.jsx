@@ -15,7 +15,7 @@ const pollutiontext = (aqius) => {
     }
     else if(101 <= aqius && aqius <= 150) {
         return (
-        <Typography variant="h3" sx={{ color:'white' }}>Unhealthy for Sensitive Groups</Typography>)
+        <Typography variant="h5" sx={{ color:'white' }}>Unhealthy for Sensitive Groups</Typography>)
     }
     else if(151 <= aqius && aqius <= 200) {
         return (

@@ -18,7 +18,7 @@ export default function Min_Max_Temp(props: any) {
             </Grid>
             <Grid item xs={8}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <Typography sx={{ color: 'white', paddingRight: '1vh' }}>
+                    <Typography sx={{ color: 'white', paddingRight: '1vh', fonsize: '18px' }}>
                         Min
                     </Typography>
                     <Typography sx={{color: 'white'}}>

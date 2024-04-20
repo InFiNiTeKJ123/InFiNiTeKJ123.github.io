@@ -116,7 +116,10 @@ function Home() {
     }
 
     useEffect(() => {
-        getlocation()
+        // getlocation()
+        getWeatherDataToday(cityThaiName)
+        getWeatherData7Day(cityThaiName)
+        getPMData(city)
     }, [])
 
     const weatherimg = (DescriptstionData) => {
@@ -174,11 +177,11 @@ function Home() {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Box sx={{ display: 'flex', alignItems: 'right', justifyContent: 'right', width: '100%' }}>
+                            {/* <Box sx={{ display: 'flex', alignItems: 'right', justifyContent: 'right', width: '100%' }}>
                                 <IconButton sx={{ height: '5vh' }} onClick={getlocation}>
                                     <GpsFixedIcon sx={{ color: 'white' }} />
                                 </IconButton>
-                            </Box>
+                            </Box> */}
                         </Grid>
                     </Grid>
                 </Box>
