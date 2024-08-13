@@ -25,7 +25,7 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Copy the Nginx configuration file
-COPY ./others/nginx-dj.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-config.conf /etc/nginx/conf.d/default.conf
 
 # Expose the port on which the app will run
 EXPOSE 80
